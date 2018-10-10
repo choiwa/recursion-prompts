@@ -279,6 +279,17 @@ var fizzBuzz = function(n) {
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  var sum = 0;
+
+  if (value === array[0] && array.length > 0) {
+    sum++;
+  }
+
+  if (!array.length) {
+    return sum;
+  }
+
+  return sum += countOccurrence(array.slice(1), value)
 };
 
 // 21. Write a recursive version of map.
