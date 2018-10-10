@@ -218,27 +218,33 @@ var createArray = function(str) {
 // 17. Reverse the order of an array
 var reverseArr = function(array) {
   // [1,2,3,4,5]
-  if (!array.length)
-  var reversedArr = [];
-
-  var recursion = (array) => {
-    if (array.length === 0) {
-      return;
-    }
-
-    reversedArr.push(array.pop());
-    recursion(array);
+  if (!array.length) {
+    return array;
   }
 
-  recursion(array);
-
-  return reversedArr;
+  return reverseArr(array.slice(1)).concat(array[0]);
+  // if (!array.length)
+  // var reversedArr = [];
+  //
+  // var recursion = (array) => {
+  //   if (array.length === 0) {
+  //     return;
+  //   }
+  //
+  //   reversedArr.push(array.pop());
+  //   recursion(array);
+  // }
+  //
+  // recursion(array);
+  //
+  // return reversedArr;
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
 var buildList = function(value, length) {
+  
 };
 
 // 19. Implement FizzBuzz. Given integer n, return an array of the string representations of 1 to n.
