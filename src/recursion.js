@@ -208,11 +208,23 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+// str1.length !== str2.length
+if (str1[0] !== str2[0]) {
+  return false;
+}
+
+if (!str1.length && !str2.length) {
+  return true;
+}
+
+return compareStr(str1.slice(1), str2.slice(1));
+
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str) {
+
 };
 
 // 17. Reverse the order of an array
@@ -303,10 +315,18 @@ var rMap = function(array, callback) {
 };
 
 // 22. Write a function that counts the number of times a key occurs in an object.
-// var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
+// var obj = {'e':{'x':'y'},
+              't':{'r':
+                    {'e':'r'},
+              'p':{'y':'r'}},'y':'e'};
 // countKeysInObj(obj, 'r') // 1
 // countKeysInObj(obj, 'e') // 2
 var countKeysInObj = function(obj, key) {
+  var sum = 0;
+
+  return sum += countKeysInObj(obj, key)
+
+
 };
 
 // 23. Write a function that counts the number of times a value occurs in an object.
