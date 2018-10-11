@@ -224,6 +224,13 @@ return compareStr(str1.slice(1), str2.slice(1));
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str) {
+  var array = [str[0]];
+
+  if (str.length === 1) {
+    return array;
+  };
+
+  return array.concat(createArray(str.substring(1)));
 
 };
 
@@ -315,18 +322,22 @@ var rMap = function(array, callback) {
 };
 
 // 22. Write a function that counts the number of times a key occurs in an object.
-// var obj = {'e':{'x':'y'},
-              't':{'r':
-                    {'e':'r'},
-              'p':{'y':'r'}},'y':'e'};
+// var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countKeysInObj(obj, 'r') // 1
 // countKeysInObj(obj, 'e') // 2
 var countKeysInObj = function(obj, key) {
   var sum = 0;
 
-  return sum += countKeysInObj(obj, key)
+  for (let objKey in obj) {
+    if (objKey === key) {
+      sum += 1;
+    }
+    if (typeof obj[objKey] === 'object') {
+      sum += countKeysInObj(obj[objKey], key);
+    }
+  }
 
-
+  return sum;
 };
 
 // 23. Write a function that counts the number of times a value occurs in an object.
