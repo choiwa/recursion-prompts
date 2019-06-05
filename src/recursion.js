@@ -396,7 +396,21 @@ var fibonacci = function (n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function (n) {};
+var nthFibo = function (n) {
+  if (n < 0) {
+    return null;
+  }
+
+  if (n === 0) {
+    return 0;
+  }
+
+  if (n === 1) {
+    return 1;
+  }
+
+  return nthFibo(n - 1) + nthFibo(n - 2);
+};
 
 // 27. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
@@ -529,12 +543,30 @@ var compress = function (list) {
 // 33. Augument every element in a list with a new value where each element is an array
 // itself.
 // augmentElements([[],[3],[7]], 5); // [[5],[3,5],[7,5]]
-var augmentElements = function (array, aug) {};
+var augmentElements = function (array, aug) {
+
+};
 
 // 34. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function (array) {};
+var minimizeZeroes = function (array) {
+  // make an miniZerosArr
+  // let miniZerosArr = [];
+
+  // check if the the array.length === 0
+  // if so return miniZerosArr
+  for (let i = 0; i < array.length; i += 1) {
+    let curr = array[i];
+    let next = array[i + 1];
+
+    if (curr === 0 && next === 0) {
+      let newArr = array.slice(0, i).concat(array.slice(i + 1));
+      return minimizeZeroes(newArr);
+    }
+  }
+  return array;
+};
 
 // 35. Alternate the numbers in an array between positive and negative regardless of
 // their original sign. The first number in the index always needs to be positive.
