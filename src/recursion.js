@@ -544,7 +544,19 @@ var compress = function (list) {
 // itself.
 // augmentElements([[],[3],[7]], 5); // [[5],[3,5],[7,5]]
 var augmentElements = function (array, aug) {
+  let newArr = [];
 
+  for (let i = 0; i < array.length; i += 1) {
+    let curr = array[i];
+    let arr = [];
+
+    if (Array.isArray(curr)) {
+      arr = curr.concat(aug);
+      augmentElements(arr, aug);
+    }
+    newArr[i] = arr;
+  }
+  return newArr;
 };
 
 // 34. Reduce a series of zeroes to a single 0.
@@ -583,7 +595,24 @@ var numToText = function (str) {};
 // *** EXTRA CREDIT ***
 
 // 37. Return the number of times a tag occurs in the DOM.
-var tagCount = function (tag, node) {};
+var tagCount = function (tag, node) {
+  let count = 0;
+
+  // check if the node has children
+  if (node) {
+    if (node.tagName) {
+      let nodeName = node.tagName.toLowerCase();
+      if (nodeName === tag.toLowerCase()) {
+        count += 1;
+      }
+      for (let i = 0; i < node.childNodes.length; i += 1) {
+        count += tagCount(tag, node.childNodes[i]);
+      }
+    }
+  }
+  return count;
+};
+
 
 // 38. Write a function for binary search.
 // var array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
